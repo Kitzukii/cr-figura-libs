@@ -1,22 +1,33 @@
 @echo off
 SET "REPO_URL=https://github.com/Kitzukii/cr-figura-libs.git"
-SET "FOLDER_PATH=LiminalIntegration"
-SET "TARGET_DIR=%cd%\%FOLDER_PATH%"
+SET "TARGET_DIR=%cd%\LiminalIntegration"
+SET "TEMP_DIR=temp_repo"
 
-REM Check if the LiminalIntegration folder exists and delete it
+REM Check if the target folder exists and delete it
 IF EXIST "%TARGET_DIR%" (
     echo Deleting existing folder: %TARGET_DIR%
     rmdir /s /q "%TARGET_DIR%"
 )
 
-REM Clone the repository, make a temp repo and take the folder to the avatar, then delete the temp repo
-git clone --depth 1 --filter=blob:none --sparse "%REPO_URL%" temp_repo
-cd temp_repo
-git sparse-checkout set "%FOLDER_PATH%"
-move "%FOLDER_PATH%" "%TARGET_DIR%"
+REM Check if temp_repo exists and delete it
+IF EXIST "%TEMP_DIR%" (
+    echo Deleting existing temp directory: %TEMP_DIR%
+    rmdir /s /q "%TEMP_DIR%"
+)
+
+REM Clone the repository
+git clone --depth 1 --filter=blob:none --sparse "%REPO_URL%" "%TEMP_DIR%"
+cd "%TEMP_DIR%"
+git sparse-checkout set "LiminalIntegration"
+
+REM Move the LiminalIntegration folder to the target directory
+move "LiminalIntegration" "%TARGET_DIR%"
+
+)
+
 cd ..
-rmdir /s /q temp_repo
+rmdir /s /q "%TEMP_DIR%"
 
 REM Finished.
-echo Folder downloaded to %TARGET_DIR%
+echo files downloaded to %TARGET_DIR%, Temp repo created and deleted, LI updated.
 pause
