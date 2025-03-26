@@ -75,7 +75,7 @@ end
 function events.render()
     -- Boost Textures
     local HudModel = models.LiminalIntegration.Hud.HUD
-    models.Hud:setVisible(true)
+    models.LiminalIntegration.Hud:setVisible(true)
     if boostsLeft == 0 then
       HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.NoneLeft"])
       HudModel:setOpacity(0.3)
