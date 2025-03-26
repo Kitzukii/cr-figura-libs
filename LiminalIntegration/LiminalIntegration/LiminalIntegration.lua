@@ -83,7 +83,7 @@ end
 function events.render()
     -- Boost Textures
     local HudModel = models.LiminalTools.Hud.HUD
-    local texDirectory = LiminalIntegration.LiminalIntegration.BoostTextures
+    local texDirectory = LiminalIntegration.BoostTextures
     models.LiminalTools.Hud:setVisible(true)
     if boostsLeft == 0 then
       HudModel:setPrimaryTexture("CUSTOM", textures["texDirectory.NoneLeft"])
