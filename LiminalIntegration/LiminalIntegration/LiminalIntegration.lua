@@ -1,7 +1,7 @@
 -- Aetheris Devs --
 -- CONFIG --
 local Debugging = false -- Currently breaks API
-local EZAnims = require("LiminalIntegration.EZAnims")
+local EZAnims = require("EZAnims")
 
 -- Get Anim Poses --
 local AttackR = EZAnims.controller:getState("attackR")
