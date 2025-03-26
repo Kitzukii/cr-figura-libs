@@ -10,10 +10,10 @@ local AttackL = EZAnims.controller:getState("attackL")
 -- INIT --
 nameplate.ENTITY:setBackgroundColor(0,0,0,0)
 nameplate.ENTITY:setOutline(true):setOutlineColor(vectors.hexToRGB(avatar:getColor()) / 1.25)
-models.LiminalTools.Skull:setScale(5, 100, 5)
-models.LiminalTools.ItemFaelithKatana:setScale(1.6)
-models.LiminalTools.ItemKatanaRUNES:setScale(1.6)
-models.LiminalTools.ItemFaelithCleaver:setScale(0.8, 1.2, 0.8)
+models.LiminalIntegration.LiminalTools.Skull:setScale(5, 100, 5)
+models.LiminalIntegration.LiminalTools.ItemFaelithKatana:setScale(1.6)
+models.LiminalIntegration.LiminalTools.ItemKatanaRUNES:setScale(1.6)
+models.LiminalIntegration.LiminalTools.ItemFaelithCleaver:setScale(0.8, 1.2, 0.8)
 
 --       /--------------\       --
 --       | CUSTOM ITEMS |       --
