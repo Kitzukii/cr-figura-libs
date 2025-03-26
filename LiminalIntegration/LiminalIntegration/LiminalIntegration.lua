@@ -82,7 +82,7 @@ function events.tick()
 end
 function events.render()
     -- Boost Textures
-    local HudModel = models.LiminalTools.Hud.HUD
+    local HudModel = models.LiminalIntegration.Hud.HUD
     local texDirectory = LiminalIntegration.BoostTextures
     models.LiminalTools.Hud:setVisible(true)
     if boostsLeft == 0 then
