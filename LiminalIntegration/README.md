@@ -1,8 +1,6 @@
 # Hey!
-Nice to see you, I don't get many visitors at all... Anyways, say hello to
-```lua
-LiminalIntegration
-```.
+Nice to see you, I don't get many visitors at all... 
+Anyways, say hello to **LiminalIntegration**!
 
 
 # Requires:
