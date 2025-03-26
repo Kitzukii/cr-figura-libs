@@ -83,27 +83,28 @@ end
 function events.render()
     -- Boost Textures
     local HudModel = models.LiminalTools.Hud.HUD
+    local texDirectory = LiminalIntegration.LiminalIntegration.BoostTextures
     models.LiminalTools.Hud:setVisible(true)
     if boostsLeft == 0 then
-      HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.NoneLeft"])
+      HudModel:setPrimaryTexture("CUSTOM", textures["texDirectory.NoneLeft"])
       HudModel:setOpacity(0.3)
     elseif boostsLeft == 1 then
-      HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.OneLeft"])
+      HudModel:setPrimaryTexture("CUSTOM", textures["texDirectory.OneLeft"])
       HudModel:setOpacity(1)
     elseif boostsLeft == 2 then
-      HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.TwoLeft"])
+      HudModel:setPrimaryTexture("CUSTOM", textures["texDirectory.TwoLeft"])
       HudModel:setOpacity( 1)
     elseif boostsLeft == 3 then
-      HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.ThreeLeft"])
+      HudModel:setPrimaryTexture("CUSTOM", textures["texDirectory.ThreeLeft"])
       HudModel:setOpacity(1)
     elseif boostsLeft == 4 then
-      HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.FourLeft"])
+      HudModel:setPrimaryTexture("CUSTOM", textures["texDirectory.FourLeft"])
       HudModel:setOpacity(1)
     elseif boostsLeft == 5 then
-        HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.FiveLeft"])
+        HudModel:setPrimaryTexture("CUSTOM", textures["texDirectory.FiveLeft"])
         HudModel:setOpacity(1)
     elseif boostsLeft == 6 then
-        HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.SixLeft"])
+        HudModel:setPrimaryTexture("CUSTOM", textures["texDirectory.SixLeft"])
         HudModel:setOpacity(1)
     end
     HudModel:setVisible(renderer:isFirstPerson())
@@ -114,7 +115,7 @@ function events.KEY_PRESS(key)
     -- 88 = X
     -- 90 = Z
     if key == 88 and boostsLeft > 0 and boostTimer <= 0 and host:isHost() then
-        goofy:setVelocity(player:getVelocity() + player:getLookDir() * 1.25)
+        goofy:setVelocity(player:getLookDir() * 1.25)
         boostsLeft = boostsLeft - 1
         --host:actionbar("Boosts Left: " .. tostring(boostsLeft)) REMOVED BECAUSE HUD IS INSTALLED
         boostTimer = 10
