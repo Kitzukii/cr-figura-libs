@@ -9,19 +9,19 @@ local Debugging = false -- Currently breaks API
 avatar:store("liminalCompatInstalled", true)
 nameplate.ENTITY:setBackgroundColor(0,0,0,0)
 nameplate.ENTITY:setOutline(true):setOutlineColor(vectors.hexToRGB(avatar:getColor()) / 1.25)
-models.LiminalTools.ItemKatana:setScale(1.6)
-models.LiminalTools.ItemKatana.Runes.Fire.smallFlame:setScale(0.5)
-models.LiminalTools.ItemFaelithCleaver:setScale(0.8, 1.2, 0.8)
+models.LiminalIntegration.LiminalTools.ItemKatana:setScale(1.6)
+models.LiminalIntegration.LiminalTools.ItemKatana.Runes.Fire.smallFlame:setScale(0.5)
+models.LiminalIntegration.LiminalTools.ItemFaelithCleaver:setScale(0.8, 1.2, 0.8)
 
 --       /--------------\       --
 --       | CUSTOM ITEMS |       --
 --       \--------------/       --
 function events.item_render(item)
     if item:getName() == "Faelith's Katana" and item.id == "minecraft:netherite_sword" then
-        return models.LiminalTools.ItemKatana
+        return models.LiminalIntegration.LiminalTools.ItemKatana
     end
     if item:getName() == "Faelith's Cleaver" and item.id == "minecraft:mace" then
-        return models.LiminalTools.ItemFaelithCleaver
+        return models.LiminalIntegration.LiminalTools.ItemFaelithCleaver
     end
 end
 
@@ -32,7 +32,7 @@ end
 local HudOn = true
 function events.render()
     local size = -client.getScaledWindowSize()
-    models.Hud.HUD:setPos(size.x/2,0,size.y/2)
+    models.LiminalIntegration.Hud.HUD:setPos(size.x/2,0,size.y/2)
 end
 -- Is it Faelith? (Kitzuki/Liminal's Mouthpiece) --
 IsFaelith = false
@@ -74,7 +74,7 @@ function events.tick()
 end
 function events.render()
     -- Boost Textures
-    local HudModel = models.Hud.HUD
+    local HudModel = models.LiminalIntegration.Hud.HUD
     models.Hud:setVisible(true)
     if boostsLeft == 0 then
       HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.NoneLeft"])
