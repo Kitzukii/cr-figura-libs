@@ -1,28 +1,36 @@
 -- Aetheris Devs --
 -- CONFIG --
 local Debugging = false -- Currently breaks API
+local EZAnims = require("LiminalIntegration.EZAnims")
 
-
-
+-- Get Anim Poses --
+local AttackR = EZAnims.controller:getState("attackR")
+local AttackL = EZAnims.controller:getState("attackL")
 
 -- INIT --
-avatar:store("liminalCompatInstalled", true)
 nameplate.ENTITY:setBackgroundColor(0,0,0,0)
 nameplate.ENTITY:setOutline(true):setOutlineColor(vectors.hexToRGB(avatar:getColor()) / 1.25)
-models.LiminalIntegration.LiminalTools.ItemKatana:setScale(1.6)
-models.LiminalIntegration.LiminalTools.ItemKatana.Runes.Fire.smallFlame:setScale(0.5)
-models.LiminalIntegration.LiminalTools.ItemFaelithCleaver:setScale(0.8, 1.2, 0.8)
+models.LiminalTools.Skull:setScale(5, 100, 5)
+models.LiminalTools.ItemFaelithKatana:setScale(1.6)
+models.LiminalTools.ItemKatanaRUNES:setScale(1.6)
+models.LiminalTools.ItemFaelithCleaver:setScale(0.8, 1.2, 0.8)
 
 --       /--------------\       --
 --       | CUSTOM ITEMS |       --
 --       \--------------/       --
 function events.item_render(item)
     if item:getName() == "Faelith's Katana" and item.id == "minecraft:netherite_sword" then
-        return models.LiminalIntegration.LiminalTools.ItemKatana
+        if IsFaelith then return models.LiminalTools.ItemKatanaRUNES end
+        return models.LiminalTools.ItemFaelithKatana
     end
     if item:getName() == "Faelith's Cleaver" and item.id == "minecraft:mace" then
-        return models.LiminalIntegration.LiminalTools.ItemFaelithCleaver
+        return models.LiminalTools.ItemFaelithCleaver
     end
+    --[[
+    if item:getName() == "Divine Fate" and item.id == "minecraft:player_head" then
+        return models.LiminalTools.ItemDivineFate
+    end
+    ]]
 end
 
 
@@ -32,7 +40,7 @@ end
 local HudOn = true
 function events.render()
     local size = -client.getScaledWindowSize()
-    models.LiminalIntegration.Hud.HUD:setPos(size.x/2,0,size.y/2)
+    models.Hud.HUD:setPos(size.x/2,0,size.y/2)
 end
 -- Is it Faelith? (Kitzuki/Liminal's Mouthpiece) --
 IsFaelith = false
@@ -74,28 +82,28 @@ function events.tick()
 end
 function events.render()
     -- Boost Textures
-    local HudModel = models.LiminalIntegration.Hud.HUD
-    models.LiminalIntegration.Hud:setVisible(true)
+    local HudModel = models.Hud.HUD
+    models.Hud:setVisible(true)
     if boostsLeft == 0 then
-        HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.LiminalIntegration.BoostTextures.NoneLeft"])
-        HudModel:setOpacity(0.3)
+      HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.NoneLeft"])
+      HudModel:setOpacity(0.3)
     elseif boostsLeft == 1 then
-        HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.LiminalIntegration.BoostTextures.OneLeft"])
-        HudModel:setOpacity(1)
+      HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.OneLeft"])
+      HudModel:setOpacity(1)
     elseif boostsLeft == 2 then
-        HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.LiminalIntegration.BoostTextures.TwoLeft"])
-        HudModel:setOpacity( 1)
+      HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.TwoLeft"])
+      HudModel:setOpacity( 1)
     elseif boostsLeft == 3 then
-        HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.LiminalIntegration.BoostTextures.ThreeLeft"])
-        HudModel:setOpacity(1)
+      HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.ThreeLeft"])
+      HudModel:setOpacity(1)
     elseif boostsLeft == 4 then
-        HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.LiminalIntegration.BoostTextures.FourLeft"])
-        HudModel:setOpacity(1)
+      HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.FourLeft"])
+      HudModel:setOpacity(1)
     elseif boostsLeft == 5 then
-        HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.LiminalIntegration.BoostTextures.FiveLeft"])
+        HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.FiveLeft"])
         HudModel:setOpacity(1)
     elseif boostsLeft == 6 then
-        HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.LiminalIntegration.BoostTextures.SixLeft"])
+        HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.SixLeft"])
         HudModel:setOpacity(1)
     end
     HudModel:setVisible(renderer:isFirstPerson())
@@ -103,8 +111,10 @@ end
 function events.KEY_PRESS(key)
     player:isLoaded()
     -- 67 = C
-    if key == 88 and boostsLeft > 0 and boostTimer <= 0 then
-        goofy:setVelocity(player:getLookDir() * 1.25)
+    -- 88 = X
+    -- 90 = Z
+    if key == 88 and boostsLeft > 0 and boostTimer <= 0 and host:isHost() then
+        goofy:setVelocity(player:getVelocity() + player:getLookDir() * 1.25)
         boostsLeft = boostsLeft - 1
         --host:actionbar("Boosts Left: " .. tostring(boostsLeft)) REMOVED BECAUSE HUD IS INSTALLED
         boostTimer = 10
