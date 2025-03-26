@@ -86,20 +86,20 @@ function events.render()
     local texDirectory = BoostTextures
     models.LiminalIntegration.Hud:setVisible(true)
     if boostsLeft == 0 then
-      HudModel:setPrimaryTexture("CUSTOM", textures["texDirectory.NoneLeft"])
-      HudModel:setOpacity(0.3)
+        HudModel:setPrimaryTexture("CUSTOM", textures["texDirectory.NoneLeft"])
+        HudModel:setOpacity(0.3)
     elseif boostsLeft == 1 then
-      HudModel:setPrimaryTexture("CUSTOM", textures["texDirectory.OneLeft"])
-      HudModel:setOpacity(1)
+        HudModel:setPrimaryTexture("CUSTOM", textures["texDirectory.OneLeft"])
+        HudModel:setOpacity(1)
     elseif boostsLeft == 2 then
-      HudModel:setPrimaryTexture("CUSTOM", textures["texDirectory.TwoLeft"])
-      HudModel:setOpacity( 1)
+        HudModel:setPrimaryTexture("CUSTOM", textures["texDirectory.TwoLeft"])
+        HudModel:setOpacity( 1)
     elseif boostsLeft == 3 then
-      HudModel:setPrimaryTexture("CUSTOM", textures["texDirectory.ThreeLeft"])
-      HudModel:setOpacity(1)
+        HudModel:setPrimaryTexture("CUSTOM", textures["texDirectory.ThreeLeft"])
+        HudModel:setOpacity(1)
     elseif boostsLeft == 4 then
-      HudModel:setPrimaryTexture("CUSTOM", textures["texDirectory.FourLeft"])
-      HudModel:setOpacity(1)
+        HudModel:setPrimaryTexture("CUSTOM", textures["texDirectory.FourLeft"])
+        HudModel:setOpacity(1)
     elseif boostsLeft == 5 then
         HudModel:setPrimaryTexture("CUSTOM", textures["texDirectory.FiveLeft"])
         HudModel:setOpacity(1)
