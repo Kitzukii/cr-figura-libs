@@ -77,25 +77,25 @@ function events.render()
     local HudModel = models.LiminalIntegration.Hud.HUD
     models.LiminalIntegration.Hud:setVisible(true)
     if boostsLeft == 0 then
-      HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.NoneLeft"])
-      HudModel:setOpacity(0.3)
+        HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.LiminalIntegration.BoostTextures.NoneLeft"])
+        HudModel:setOpacity(0.3)
     elseif boostsLeft == 1 then
-      HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.OneLeft"])
-      HudModel:setOpacity(1)
+        HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.LiminalIntegration.BoostTextures.OneLeft"])
+        HudModel:setOpacity(1)
     elseif boostsLeft == 2 then
-      HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.TwoLeft"])
-      HudModel:setOpacity( 1)
+        HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.LiminalIntegration.BoostTextures.TwoLeft"])
+        HudModel:setOpacity( 1)
     elseif boostsLeft == 3 then
-      HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.ThreeLeft"])
-      HudModel:setOpacity(1)
+        HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.LiminalIntegration.BoostTextures.ThreeLeft"])
+        HudModel:setOpacity(1)
     elseif boostsLeft == 4 then
-      HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.FourLeft"])
-      HudModel:setOpacity(1)
+        HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.LiminalIntegration.BoostTextures.FourLeft"])
+        HudModel:setOpacity(1)
     elseif boostsLeft == 5 then
-        HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.FiveLeft"])
+        HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.LiminalIntegration.BoostTextures.FiveLeft"])
         HudModel:setOpacity(1)
     elseif boostsLeft == 6 then
-        HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.BoostTextures.SixLeft"])
+        HudModel:setPrimaryTexture("CUSTOM", textures["LiminalIntegration.LiminalIntegration.BoostTextures.SixLeft"])
         HudModel:setOpacity(1)
     end
     HudModel:setVisible(renderer:isFirstPerson())
