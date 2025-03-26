@@ -20,11 +20,11 @@ models.LiminalIntegration.LiminalTools.ItemFaelithCleaver:setScale(0.8, 1.2, 0.8
 --       \--------------/       --
 function events.item_render(item)
     if item:getName() == "Faelith's Katana" and item.id == "minecraft:netherite_sword" then
-        if IsFaelith then return models.LiminalTools.ItemKatanaRUNES end
-        return models.LiminalTools.ItemFaelithKatana
+        if IsFaelith then return models.LiminalIntegration.LiminalTools.ItemKatanaRUNES end
+        return models.LiminalIntegration.LiminalTools.ItemFaelithKatana
     end
     if item:getName() == "Faelith's Cleaver" and item.id == "minecraft:mace" then
-        return models.LiminalTools.ItemFaelithCleaver
+        return models.LiminalIntegration.LiminalTools.ItemFaelithCleaver
     end
     --[[
     if item:getName() == "Divine Fate" and item.id == "minecraft:player_head" then
@@ -40,7 +40,7 @@ end
 local HudOn = true
 function events.render()
     local size = -client.getScaledWindowSize()
-    models.Hud.HUD:setPos(size.x/2,0,size.y/2)
+    models.LiminalIntegration.Hud.HUD:setPos(size.x/2,0,size.y/2)
 end
 -- Is it Faelith? (Kitzuki/Liminal's Mouthpiece) --
 IsFaelith = false
