@@ -1,4 +1,5 @@
-# !! WARNING !!
-You need to copy EVERYTHING except this README.md file, including .bbmodels and any folders into your figura avatar for it to work correctly!
+# !! NOTICE !!
+Only download the "LiminalIntInstall.bat" file, and put it inside your figura folder.
+All other files shouldn't be downloade, since the .bat file does it for you.
 
-# Happy Liminal'ing!
+# DO NOT TRY TO INSTALL IT MANUALLY.
