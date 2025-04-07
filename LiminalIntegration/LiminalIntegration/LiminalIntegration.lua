@@ -114,7 +114,7 @@ function events.KEY_PRESS(key)
     -- 67 = C
     -- 88 = X
     -- 90 = Z
-    if key == 88 and boostsLeft > 0 and boostTimer <= 0 and host:isHost() then
+    if key == 88 and boostsLeft > 0 and boostTimer <= 0 and host:isHost() and not host:isChatOpen() then
         goofy:setVelocity(player:getLookDir() * 1.25)
         boostsLeft = boostsLeft - 1
         --host:actionbar("Boosts Left: " .. tostring(boostsLeft)) REMOVED BECAUSE HUD IS INSTALLED
